@@ -281,3 +281,23 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ─── Spine View Utilities ─── */
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.spine-text-fade {
+  mask-image: linear-gradient(to bottom, black 70%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

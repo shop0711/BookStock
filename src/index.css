@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* App Colors */
+  --color-bg: #FAFAF7;
+  --color-surface: #FFFFFF;
+  --color-shelf-dark: #5C3A22;
+  --color-shelf: #6B4226;
+  --color-shelf-light: #8B5E3C;
+  --color-gold: #B8860B;
+  --color-gold-light: #D4A745;
+  --color-text-primary: #2C2C2C;
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted: #9E9E9E;
+  --color-border: #E8E4DF;
+  --color-border-light: #F0ECE6;
+
+  /* Status Colors */
+  --color-status-want: #2E7D8C;
+  --color-status-want-bg: #E8F4F8;
+  --color-status-want-border: #B8DDE6;
+  --color-status-reading: #C17817;
+  --color-status-reading-bg: #FFF3E0;
+  --color-status-reading-border: #FFDBA6;
+  --color-status-finished: #4A7C4A;
+  --color-status-finished-bg: #E8F5E9;
+  --color-status-finished-border: #B8D4B8;
+
+  /* Fonts */
+  --font-serif: 'Noto Serif JP', 'Georgia', serif;
+  --font-sans: 'Noto Sans JP', 'Helvetica Neue', sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-book-slide-in: book-slide-in 0.5s ease-out forwards;
+  --animate-float-gentle: float-gentle 3s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+}
+
+/* ─── Keyframe Animations ─── */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes book-slide-in {
+  from { opacity: 0; transform: translateY(30px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(184, 134, 11, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(184, 134, 11, 0.5); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Base Styles ─── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* ─── Selection ─── */
+
+::selection {
+  background: rgba(184, 134, 11, 0.2);
+  color: var(--color-text-primary);
+}
+
+/* ─── Bookshelf Components ─── */
+
+/* Wooden shelf plank */
+.shelf-plank {
+  width: 100%;
+  height: 14px;
+  background: linear-gradient(
+    180deg,
+    #9B7653 0%,
+    #8B5E3C 20%,
+    #6B4226 50%,
+    #5C3A22 100%
+  );
+  border-radius: 1px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* Shelf front edge - the visible front face */
+.shelf-edge {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    180deg,
+    #5C3A22 0%,
+    #4A2E1A 60%,
+    #3D2515 100%
+  );
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 3D Book container */
+.book-3d {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease;
+  cursor: pointer;
+  transform-origin: bottom center;
+}
+
+.book-3d:hover {
+  transform: translateY(-10px) scale(1.03);
+  z-index: 10;
+}
+
+/* Book cover face */
+.book-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2px 5px 5px 2px;
+  overflow: hidden;
+  box-shadow:
+    3px 3px 8px rgba(0, 0, 0, 0.18),
+    1px 1px 3px rgba(0, 0, 0, 0.12),
+    6px 6px 16px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.35s ease;
+}
+
+.book-3d:hover .book-cover {
+  box-shadow:
+    5px 5px 14px rgba(0, 0, 0, 0.25),
+    2px 2px 6px rgba(0, 0, 0, 0.15),
+    10px 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Page edges on the right side */
+.book-cover::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 0;
+  bottom: 3px;
+  width: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 0%,
+    #f5f0e8 20%,
+    #ede7db 50%,
+    #f5f0e8 80%,
+    rgba(0, 0, 0, 0.03) 100%
+  );
+  border-radius: 0 2px 2px 0;
+}
+
+/* Spine shadow on the left */
+.book-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.08) 40%,
+    transparent 100%
+  );
+  border-radius: 2px 0 0 2px;
+  z-index: 1;
+}
+
+/* ─── Modal ─── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+/* ─── Utility Classes ─── */
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

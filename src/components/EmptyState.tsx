@@ -35,10 +35,10 @@ export function EmptyState({ status }: EmptyStateProps) {
       className="flex flex-col items-center justify-center py-20 select-none"
     >
       <div className="text-6xl mb-6 animate-float-gentle">{config.emoji}</div>
-      <h3 className="font-serif text-lg font-semibold text-[#2C2C2C] mb-2">
+      <h3 className="font-serif text-lg font-semibold text-[#2D3748] mb-2">
         {config.title}
       </h3>
-      <p className="text-sm text-[#9E9E9E] text-center max-w-xs leading-relaxed">
+      <p className="text-sm text-[#8A8A8A] text-center max-w-xs leading-relaxed font-sans">
         {config.subtitle}
       </p>
     </motion.div>

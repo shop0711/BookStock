@@ -94,12 +94,12 @@ export function OcrUploader({ onSearchText }: OcrUploaderProps) {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
+        className={`border-2 border-dashed rounded-2xl p-6 text-center transition-all duration-300 ${
           isDragOver
-            ? 'border-[#B8860B] bg-[#FAFAF7] scale-[1.01]'
+            ? 'border-[#C9A96E] bg-[#F5F0E8] scale-[1.01]'
             : imagePreview
-              ? 'border-[#E8E4DF] bg-white'
-              : 'border-[#E8E4DF] hover:border-[#B8860B] hover:bg-[#FAFAF7] cursor-pointer'
+              ? 'border-[#E8E4DF] bg-[#FDFBF7]'
+              : 'border-[#D4CFC6] hover:border-[#C9A96E] hover:bg-[#F5F0E8] cursor-pointer'
         }`}
       >
         {!imagePreview ? (
@@ -109,13 +109,13 @@ export function OcrUploader({ onSearchText }: OcrUploaderProps) {
             className="flex flex-col items-center gap-3"
           >
             <div className="text-4xl">
-              <Camera size={36} className="text-[#9E9E9E]" />
+              <Camera size={32} className="text-[#C9A96E]/60" />
             </div>
             <div>
-              <p className="text-sm font-medium text-[#6B6B6B]">
+              <p className="text-sm font-medium text-[#4A5568]">
                 画像をドラッグ＆ドロップ
               </p>
-              <p className="text-xs text-[#9E9E9E] mt-1">
+              <p className="text-xs text-[#8A8A8A] mt-1">
                 または クリックして選択
               </p>
             </div>
@@ -124,7 +124,7 @@ export function OcrUploader({ onSearchText }: OcrUploaderProps) {
           <img
             src={imagePreview}
             alt="アップロードされた画像"
-            className="max-h-40 object-contain rounded-lg mx-auto"
+            className="max-h-32 object-contain rounded-lg mx-auto"
           />
         )}
       </div>
@@ -146,13 +146,13 @@ export function OcrUploader({ onSearchText }: OcrUploaderProps) {
         >
           <div className="bg-[#E8E4DF] rounded-full h-2 overflow-hidden">
             <motion.div
-              className="bg-[#B8860B] h-full rounded-full"
+              className="bg-gradient-to-r from-[#C9A96E] to-[#B8960B] h-full rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
             />
           </div>
-          <p className="text-xs text-[#9E9E9E] text-center">
+          <p className="text-xs text-[#8A8A8A] text-center">
             テキストを認識中... {progress}%
           </p>
         </motion.div>
@@ -170,21 +170,21 @@ export function OcrUploader({ onSearchText }: OcrUploaderProps) {
           animate={{ opacity: 1, y: 0 }}
           className="space-y-3"
         >
-          <p className="text-xs text-[#9E9E9E] font-medium">認識されたテキスト</p>
+          <p className="text-xs text-[#C9A96E] font-medium font-serif">認識されたテキスト</p>
           <textarea
             value={ocrText}
             onChange={(e) => setOcrText(e.target.value)}
-            className="w-full min-h-[80px] p-3 rounded-xl border border-[#E8E4DF] bg-[#FAFAF7] text-sm text-[#2C2C2C] resize-y focus:outline-none focus:border-[#B8860B] focus:ring-1 focus:ring-[#B8860B] transition-all duration-200"
+            className="w-full min-h-[60px] max-h-[120px] p-3 rounded-xl border border-[#E8E4DF] bg-[#F5F0E8]/50 text-sm text-[#2D3748] resize-y focus:outline-none focus:border-[#C9A96E] focus:ring-1 focus:ring-[#C9A96E] transition-all duration-200"
           />
           <button
             onClick={handleSearch}
-            className="w-full bg-[#B8860B] text-white px-6 py-2.5 rounded-xl text-sm font-medium hover:bg-[#9E7209] transition-colors duration-200"
+            className="w-full bg-gradient-to-r from-[#C9A96E] to-[#B8960B] text-[#1B2438] font-semibold px-6 py-2.5 rounded-xl text-sm hover:from-[#D4B876] hover:to-[#C9A96E] transition-all duration-200"
           >
             この内容で検索
           </button>
           <button
             onClick={handleReset}
-            className="w-full flex items-center justify-center gap-2 text-[#9E9E9E] hover:text-[#6B6B6B] text-sm py-2 transition-colors duration-200"
+            className="w-full flex items-center justify-center gap-2 text-[#8A8A8A] hover:text-[#4A5568] text-sm py-2 transition-colors duration-200"
           >
             <RotateCcw size={14} />
             リセット

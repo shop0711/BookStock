@@ -31,26 +31,26 @@ export function Header({ totalCount, onExport, onImport }: HeaderProps) {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="sticky top-0 bg-white/80 backdrop-blur-md border-b border-[#E8E4DF] z-40"
+      className="sticky top-0 bg-[#1B2438]/95 backdrop-blur-md border-b border-[#C9A96E]/20 z-40"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Left: Logo */}
-        <div className="flex items-baseline gap-2">
-          <h1 className="font-serif text-xl font-semibold text-[#2C2C2C]">
+        <div className="flex items-baseline gap-2.5">
+          <h1 className="font-serif text-xl font-semibold text-[#F5F0E8] tracking-wide">
             📚 BookStock
           </h1>
-          <span className="text-[#9E9E9E] text-xs font-serif">本棚</span>
+          <span className="text-[#C9A96E]/60 text-xs font-serif italic">本棚</span>
         </div>
 
         {/* Right: Count + Actions */}
         <div className="flex items-center gap-3">
-          <span className="bg-[#E8E4DF] rounded-full px-3 py-1 text-xs font-medium text-[#6B6B6B]">
+          <span className="bg-[#C9A96E]/15 border border-[#C9A96E]/30 rounded-full px-3.5 py-1 text-xs font-medium text-[#C9A96E]">
             {totalCount}冊
           </span>
 
           <button
             onClick={onExport}
-            className="p-2 rounded-lg text-[#9E9E9E] hover:text-[#6B6B6B] hover:bg-[#F5F3F0] transition-all duration-200"
+            className="p-2 rounded-lg text-[#C9A96E]/50 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 transition-all duration-200"
             title="エクスポート"
           >
             <Download size={18} />
@@ -58,7 +58,7 @@ export function Header({ totalCount, onExport, onImport }: HeaderProps) {
 
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 rounded-lg text-[#9E9E9E] hover:text-[#6B6B6B] hover:bg-[#F5F3F0] transition-all duration-200"
+            className="p-2 rounded-lg text-[#C9A96E]/50 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 transition-all duration-200"
             title="インポート"
           >
             <Upload size={18} />

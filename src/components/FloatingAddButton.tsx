@@ -14,10 +14,10 @@ export function FloatingAddButton({ onClick }: FloatingAddButtonProps) {
       transition={{ delay: 0.3, type: 'spring', stiffness: 260, damping: 20 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-[#B8860B] text-white shadow-lg flex items-center justify-center animate-pulse-soft hover:shadow-xl transition-shadow duration-300"
+      className="fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-[#D4B876] via-[#C9A96E] to-[#B8960B] text-[#1B2438] shadow-[0_4px_20px_rgba(201,169,110,0.5)] flex items-center justify-center animate-pulse-soft hover:shadow-[0_6px_28px_rgba(201,169,110,0.7)] transition-shadow duration-300"
       title="本を追加"
     >
-      <Plus size={24} />
+      <Plus size={26} strokeWidth={2.5} />
     </motion.button>
   );
 }

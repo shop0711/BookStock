@@ -64,7 +64,7 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
   return (
     <div className="min-h-[400px]">
       {/* Status Tabs */}
-      <div className="flex gap-1 mb-8 flex-wrap">
+      <div className="flex gap-2 mb-8 flex-wrap">
         {STATUS_KEYS.map(status => {
           const config = STATUS_CONFIG[status];
           const isActive = activeStatus === status;
@@ -72,10 +72,10 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
             <button
               key={status}
               onClick={() => setActiveStatus(status)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
                 isActive
-                  ? `${config.bgColor} ${config.textColor} shadow-sm`
-                  : 'bg-transparent text-[#9E9E9E] hover:text-[#6B6B6B] hover:bg-[#F5F3F0]'
+                  ? `${config.bgColor} ${config.textColor} ${config.borderColor} shadow-sm`
+                  : 'bg-transparent text-[#8A8A8A] border-transparent hover:text-[#4A5568] hover:bg-[#F5F0E8]/60'
               }`}
             >
               {config.emoji} {config.label} ({counts[status]})

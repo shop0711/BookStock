@@ -17,15 +17,13 @@ function useBooksPerRow() {
   const [booksPerRow, setBooksPerRow] = useState(() => {
     if (typeof window === 'undefined') return 3;
     if (window.innerWidth >= 1024) return 5;
-    if (window.innerWidth >= 640) return 3;
-    return 2;
+    return 3;
   });
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) setBooksPerRow(5);
-      else if (window.innerWidth >= 640) setBooksPerRow(3);
-      else setBooksPerRow(2);
+      else setBooksPerRow(3);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -125,10 +123,10 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
           {filteredBooks.length === 0 ? (
             <EmptyState status={activeStatus} />
           ) : viewMode === 'card' ? (
-            <div className="space-y-6">
+            <div className="space-y-4">
               {rows.map((row, rowIndex) => (
-                <div key={rowIndex} className="mb-14">
-                  <div className="flex gap-6 sm:gap-8 justify-start items-end px-4 sm:px-6 pb-2">
+                <div key={rowIndex} className="mb-10 sm:mb-14">
+                  <div className="flex gap-2.5 sm:gap-6 lg:gap-8 justify-start items-end px-3 sm:px-6 pb-0.5">
                     {row.map((book, bookIndex) => (
                       <BookCard
                         key={book.id}

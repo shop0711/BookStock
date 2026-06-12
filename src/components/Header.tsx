@@ -33,7 +33,7 @@ export function Header({ totalCount, onExport, onImport }: HeaderProps) {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="sticky top-0 bg-[#1B2438]/85 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.03)] z-40 transition-all duration-300"
     >
-      <div className="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between">
         {/* Left: Logo */}
         <div className="flex items-baseline gap-3">
           <h1 className="font-serif text-xl font-medium text-[#F5F0E8] tracking-widest select-none">

@@ -72,7 +72,7 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
             <button
               key={status}
               onClick={() => setActiveStatus(status)}
-              className={`px-6 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all duration-300 active:scale-[0.96] ${
+              className={`px-6 py-3 sm:py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all duration-300 active:scale-[0.96] ${
                 isActive
                   ? 'bg-[#C9A96E]/10 text-[#C9A96E] shadow-[0_2px_12px_rgba(201,169,110,0.08)]'
                   : 'bg-transparent text-[#4A5568]/50 hover:text-[#2D3748] hover:bg-[#C9A96E]/5'

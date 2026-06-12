@@ -89,7 +89,7 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
           e.stopPropagation();
           handleAdd(result);
         }}
-        className="text-[10px] tracking-widest font-bold bg-[#1B2438] text-[#FDFBF7] hover:bg-[#C9A96E] hover:text-[#1B2438] px-4 py-2 rounded-full shrink-0 self-center transition-all duration-300 active:scale-[0.95]"
+        className="text-[10px] tracking-widest font-bold bg-[#1B2438] text-[#FDFBF7] hover:bg-[#C9A96E] hover:text-[#1B2438] px-5 py-3 sm:px-4 sm:py-2 rounded-full shrink-0 self-center transition-all duration-300 active:scale-[0.95]"
       >
         追加
       </button>
@@ -119,7 +119,7 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
             className="fixed bottom-0 left-0 right-0 z-50 flex justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-[#FDFBF7]/85 backdrop-blur-xl border border-[#C9A96E]/5 rounded-t-[32px] shadow-[0_-12px_40px_rgba(27,36,56,0.1)] w-full max-w-xl flex flex-col max-h-[85vh]">
+            <div className="bg-[#FDFBF7]/85 backdrop-blur-xl border border-[#C9A96E]/5 rounded-t-[32px] shadow-[0_-12px_40px_rgba(27,36,56,0.1)] w-full max-w-xl flex flex-col max-h-[85vh] pb-[max(env(safe-area-inset-bottom),20px)] sm:pb-6">
               {/* Grab handle */}
               <div className="flex justify-center pt-4 pb-1">
                 <div className="w-12 h-1 rounded-full bg-[#D4CFC6]/60" />
@@ -168,7 +168,7 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="タイトルで検索..."
-                        className="w-full pl-11 pr-4 py-3 rounded-xl border border-transparent bg-[#C9A96E]/5 text-xs tracking-wide text-[#2D3748] placeholder-[#4A5568]/40 focus:border-[#C9A96E]/30 focus:bg-transparent focus:ring-0 focus:outline-none transition-all duration-300"
+                        className="w-full pl-11 pr-4 py-3.5 sm:py-3 rounded-xl border border-transparent bg-[#C9A96E]/5 text-xs tracking-wide text-[#2D3748] placeholder-[#4A5568]/40 focus:border-[#C9A96E]/30 focus:bg-transparent focus:ring-0 focus:outline-none transition-all duration-300"
                         autoFocus
                       />
                     </div>
@@ -201,14 +201,14 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
                       value={isbnQuery}
                       onChange={(e) => setIsbnQuery(e.target.value)}
                       placeholder="ISBN（10桁 or 13桁）を入力"
-                      className="w-full px-4 py-3 rounded-xl border border-transparent bg-[#C9A96E]/5 text-xs tracking-wide text-[#2D3748] placeholder-[#4A5568]/40 focus:border-[#C9A96E]/30 focus:bg-transparent focus:ring-0 focus:outline-none transition-all duration-300"
+                      className="w-full px-4 py-3.5 sm:py-3 rounded-xl border border-transparent bg-[#C9A96E]/5 text-xs tracking-wide text-[#2D3748] placeholder-[#4A5568]/40 focus:border-[#C9A96E]/30 focus:bg-transparent focus:ring-0 focus:outline-none transition-all duration-300"
                       autoFocus
                       onKeyDown={(e) => e.key === 'Enter' && handleIsbnSearch()}
                     />
                     <button
                       onClick={handleIsbnSearch}
                       disabled={isLoading || !isbnQuery.trim()}
-                      className="mt-4 w-full bg-[#1B2438] text-[#FDFBF7] hover:bg-[#C9A96E] hover:text-[#1B2438] font-bold tracking-widest text-xs py-3 rounded-xl hover:shadow-md disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 active:scale-[0.98]"
+                      className="mt-4 w-full bg-[#1B2438] text-[#FDFBF7] hover:bg-[#C9A96E] hover:text-[#1B2438] font-bold tracking-widest text-xs py-4 sm:py-3 rounded-xl hover:shadow-md disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 active:scale-[0.98]"
                     >
                       {isLoading ? (
                         <Loader2 size={14} className="animate-spin mx-auto" />

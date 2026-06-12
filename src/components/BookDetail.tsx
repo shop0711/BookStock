@@ -75,7 +75,7 @@ export function BookDetail({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 15 }}
             transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-            className="bg-[#FDFBF7]/90 backdrop-blur-lg rounded-[28px] shadow-[0_12px_50px_rgba(27,36,56,0.12)] border border-[#C9A96E]/5 max-w-2xl w-full max-h-[85vh] overflow-y-auto relative p-8 select-none"
+            className="bg-[#FDFBF7]/90 backdrop-blur-lg rounded-[28px] shadow-[0_12px_50px_rgba(27,36,56,0.12)] border border-[#C9A96E]/5 max-w-2xl w-full max-h-[85vh] overflow-y-auto relative p-6 sm:p-8 pb-[max(env(safe-area-inset-bottom),24px)] sm:pb-8 select-none"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -161,7 +161,7 @@ export function BookDetail({
                     <button
                       key={status}
                       onClick={() => onUpdateStatus(book.id, status)}
-                      className={`px-5 py-2 rounded-full text-xs tracking-wider transition-all duration-300 font-medium active:scale-[0.96] border-none ${
+                      className={`px-6 py-3 sm:px-5 sm:py-2 rounded-full text-xs tracking-wider transition-all duration-300 font-medium active:scale-[0.96] border-none ${
                         isActive
                           ? 'bg-[#C9A96E]/20 text-[#8B6914] shadow-[0_2px_12px_rgba(201,169,110,0.08)]'
                           : 'bg-[#C9A96E]/5 text-[#4A5568]/50 hover:text-[#2D3748] hover:bg-[#C9A96E]/10'
@@ -192,7 +192,7 @@ export function BookDetail({
             <div className="mt-6 pt-4 flex justify-end">
               <button
                 onClick={handleDelete}
-                className="flex items-center gap-2 text-xs text-red-500/60 hover:text-red-600 hover:bg-red-500/5 px-4 py-2.5 rounded-xl transition-all duration-300 active:scale-[0.97]"
+                className="flex items-center gap-2 text-xs text-red-500/60 hover:text-red-600 hover:bg-red-500/5 px-5 py-3.5 sm:px-4 sm:py-2.5 rounded-xl transition-all duration-300 active:scale-[0.97]"
               >
                 <Trash2 size={13} />
                 この本を削除

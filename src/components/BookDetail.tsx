@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, BookOpen, Trash2 } from 'lucide-react';
+import { X, BookOpen, Trash2, ExternalLink } from 'lucide-react';
 import type { Book, BookStatus } from '@/types';
 import { STATUS_CONFIG } from '@/types';
 
@@ -187,6 +187,27 @@ export function BookDetail({
                 className="w-full min-h-[100px] p-4 rounded-2xl border border-transparent bg-[#C9A96E]/5 text-xs text-[#2D3748] placeholder-[#4A5568]/40 resize-y focus:outline-none focus:border-[#C9A96E]/30 focus:bg-transparent focus:ring-0 transition-all duration-300 leading-relaxed"
               />
             </div>
+
+            {/* Store Availability */}
+            {book.isbn && (
+              <div className="mt-8 py-5">
+                <p className="text-[10px] font-bold text-[#C9A96E]/80 uppercase tracking-widest mb-4 font-serif">
+                  Store Availability
+                </p>
+                <p className="text-[10px] text-[#4A5568]/50 mb-4 font-sans tracking-wide leading-relaxed">
+                  提携書店の店舗在庫をリアルタイムで確認できます。
+                </p>
+                <a
+                  href={`https://www.shoten.co.jp/rel/searchbook/?isbn=${book.isbn}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2.5 w-full py-3.5 sm:py-3 rounded-xl border border-[#C9A96E]/30 text-[#C9A96E] hover:bg-[#C9A96E]/10 hover:border-[#C9A96E]/50 font-serif text-xs tracking-widest transition-all duration-300 active:scale-[0.98] select-none"
+                >
+                  <ExternalLink size={13} />
+                  店舗在庫を検索する
+                </a>
+              </div>
+            )}
 
             {/* Delete */}
             <div className="mt-6 pt-4 flex justify-end">

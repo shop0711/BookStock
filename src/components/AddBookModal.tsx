@@ -126,18 +126,18 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
               </div>
 
               {/* Header */}
-              <div className="px-8 pt-3 pb-4 flex justify-between items-center">
-                <h2 className="font-serif text-base font-medium text-[#1B2438] tracking-widest uppercase">本を追加</h2>
+              <div className="px-5 sm:px-8 pt-2.5 sm:pt-3 pb-3 sm:pb-4 flex justify-between items-center">
+                <h2 className="font-serif text-xs sm:text-base font-medium text-[#1B2438] tracking-widest uppercase">本を追加</h2>
                 <button
                   onClick={onClose}
-                  className="p-2.5 rounded-full hover:bg-[#C9A96E]/10 active:scale-95 transition-all duration-200 text-[#4A5568]/60 hover:text-[#1B2438]"
+                  className="p-2 sm:p-2.5 rounded-full hover:bg-[#C9A96E]/10 active:scale-95 transition-all duration-200 text-[#4A5568]/60 hover:text-[#1B2438]"
                 >
-                  <X size={18} />
+                  <X size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </button>
               </div>
 
               {/* Tab bar */}
-              <div className="px-8 py-2 flex gap-3">
+              <div className="px-5 sm:px-8 py-1.5 sm:py-2 flex gap-2 sm:gap-3">
                 {TABS.map((tab, index) => (
                   <button
                     key={index}
@@ -145,7 +145,7 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
                       setActiveTab(index);
                       clearResults();
                     }}
-                    className={`px-4 py-2 text-xs font-medium tracking-wide rounded-full transition-all duration-300 active:scale-[0.96] ${
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-medium tracking-wide rounded-full transition-all duration-300 active:scale-[0.96] ${
                       activeTab === index
                         ? 'bg-[#C9A96E]/15 text-[#C9A96E] font-medium'
                         : 'text-[#4A5568]/50 hover:text-[#2D3748] hover:bg-[#C9A96E]/5'
@@ -157,7 +157,7 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
               </div>
 
               {/* Content — scrollable */}
-              <div className="flex-1 overflow-y-auto overscroll-contain p-8">
+              <div className="flex-1 overflow-y-auto overscroll-contain p-5 sm:p-8">
                 {/* Tab 0: Title Search */}
                 {activeTab === 0 && (
                   <div>
@@ -184,7 +184,7 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
                     )}
 
                     {!isLoading && results.length > 0 && (
-                      <div className="space-y-1 mt-6">
+                      <div className="space-y-1 mt-4 sm:mt-6">
                         {results.map(renderSearchResult)}
                       </div>
                     )}

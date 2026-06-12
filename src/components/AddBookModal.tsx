@@ -81,6 +81,9 @@ export function AddBookModal({ isOpen, onClose, onAdd }: AddBookModalProps) {
         <p className="text-[10px] sm:text-xs text-[#4A5568]/60 mt-1 truncate tracking-wide">
           {result.authors.join(', ') || '著者不明'}
         </p>
+        <p className="text-[10px] text-[#4A5568]/50 mt-0.5 tracking-wider font-sans">
+          ISBN: {result.isbn || '--'}
+        </p>
       </div>
 
       {/* Add button */}

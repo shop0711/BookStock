@@ -5,21 +5,18 @@ interface EmptyStateProps {
   status: BookStatus;
 }
 
-const EMPTY_CONFIG: Record<BookStatus, { emoji: string; title: string; subtitle: string }> = {
+const EMPTY_CONFIG: Record<BookStatus, { title: string; subtitle: string }> = {
   'want-to-read': {
-    emoji: '📚',
-    title: 'まだ本がありません',
-    subtitle: '右下の＋ボタンから、気になる本を追加しましょう',
+    title: '静かな本棚に、まだ本はありません',
+    subtitle: '右下の ＋ から、あなたのコレクションを始めてください。',
   },
   'reading': {
-    emoji: '📖',
-    title: '読書中の本はありません',
-    subtitle: '読みたい本のステータスを変更してみましょう',
+    title: '現在、開かれている頁はありません',
+    subtitle: '読みたい本のステータスを「読書中」に更新してみましょう。',
   },
   'finished': {
-    emoji: '✨',
-    title: '読了した本はありません',
-    subtitle: '読了した本をここで振り返れます',
+    title: '紡がれた物語は、まだありません',
+    subtitle: '読了した本が、ここに美しくアーカイブされます。',
   },
 };
 
@@ -28,17 +25,16 @@ export function EmptyState({ status }: EmptyStateProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="flex flex-col items-center justify-center py-20 select-none"
+      transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+      className="flex flex-col items-center justify-center py-32 select-none"
     >
-      <div className="text-6xl mb-6 animate-float-gentle">{config.emoji}</div>
-      <h3 className="font-serif text-lg font-semibold text-[#2D3748] mb-2">
+      <h3 className="font-serif italic text-base sm:text-lg tracking-widest text-[#2D3748]/70 mb-4 text-center">
         {config.title}
       </h3>
-      <p className="text-sm text-[#8A8A8A] text-center max-w-xs leading-relaxed font-sans">
+      <p className="text-xs text-[#4A5568]/50 text-center max-w-xs leading-relaxed font-serif font-light tracking-wide">
         {config.subtitle}
       </p>
     </motion.div>

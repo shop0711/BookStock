@@ -62,9 +62,9 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
   );
 
   return (
-    <div className="min-h-[400px]">
+    <div className="min-h-[400px] py-4">
       {/* Status Tabs */}
-      <div className="flex gap-2 mb-8 flex-wrap">
+      <div className="flex gap-3 mb-16 flex-wrap justify-center sm:justify-start">
         {STATUS_KEYS.map(status => {
           const config = STATUS_CONFIG[status];
           const isActive = activeStatus === status;
@@ -72,13 +72,13 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
             <button
               key={status}
               onClick={() => setActiveStatus(status)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+              className={`px-6 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all duration-300 active:scale-[0.96] ${
                 isActive
-                  ? `${config.bgColor} ${config.textColor} ${config.borderColor} shadow-sm`
-                  : 'bg-transparent text-[#8A8A8A] border-transparent hover:text-[#4A5568] hover:bg-[#F5F0E8]/60'
+                  ? 'bg-[#C9A96E]/10 text-[#C9A96E] shadow-[0_2px_12px_rgba(201,169,110,0.08)]'
+                  : 'bg-transparent text-[#4A5568]/50 hover:text-[#2D3748] hover:bg-[#C9A96E]/5'
               }`}
             >
-              {config.emoji} {config.label} ({counts[status]})
+              {config.emoji} {config.label} <span className="opacity-60 font-sans ml-1">({counts[status]})</span>
             </button>
           );
         })}
@@ -91,15 +91,15 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
         >
           {filteredBooks.length === 0 ? (
             <EmptyState status={activeStatus} />
           ) : (
-            <div className="space-y-0">
+            <div className="space-y-6">
               {rows.map((row, rowIndex) => (
-                <div key={rowIndex}>
-                  <div className="flex gap-4 sm:gap-6 justify-start items-end px-2 sm:px-4 pb-1">
+                <div key={rowIndex} className="mb-14">
+                  <div className="flex gap-6 sm:gap-8 justify-start items-end px-4 sm:px-6 pb-2">
                     {row.map((book, bookIndex) => (
                       <BookCard
                         key={book.id}
@@ -110,7 +110,7 @@ export function Bookshelf({ books, onBookClick }: BookshelfProps) {
                     ))}
                   </div>
                   <div className="shelf-plank" />
-                  <div className="shelf-edge mb-8" />
+                  <div className="shelf-edge" />
                 </div>
               ))}
             </div>

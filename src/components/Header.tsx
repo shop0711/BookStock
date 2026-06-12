@@ -30,27 +30,27 @@ export function Header({ totalCount, onExport, onImport }: HeaderProps) {
     <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="sticky top-0 bg-[#1B2438]/95 backdrop-blur-md border-b border-[#C9A96E]/20 z-40"
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="sticky top-0 bg-[#1B2438]/85 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.03)] z-40 transition-all duration-300"
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between">
         {/* Left: Logo */}
-        <div className="flex items-baseline gap-2.5">
-          <h1 className="font-serif text-xl font-semibold text-[#F5F0E8] tracking-wide">
+        <div className="flex items-baseline gap-3">
+          <h1 className="font-serif text-xl font-medium text-[#F5F0E8] tracking-widest select-none">
             📚 BookStock
           </h1>
-          <span className="text-[#C9A96E]/60 text-xs font-serif italic">本棚</span>
+          <span className="text-[#C9A96E]/50 text-xs font-serif italic tracking-wide select-none">デジタルアーカイブ</span>
         </div>
 
         {/* Right: Count + Actions */}
-        <div className="flex items-center gap-3">
-          <span className="bg-[#C9A96E]/15 border border-[#C9A96E]/30 rounded-full px-3.5 py-1 text-xs font-medium text-[#C9A96E]">
-            {totalCount}冊
+        <div className="flex items-center gap-4">
+          <span className="bg-[#C9A96E]/10 border-none rounded-full px-4 py-1 text-xs font-medium text-[#C9A96E] tracking-wider select-none">
+            {totalCount} 冊のコレクション
           </span>
 
           <button
             onClick={onExport}
-            className="p-2 rounded-lg text-[#C9A96E]/50 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 transition-all duration-200"
+            className="p-2.5 rounded-full text-[#C9A96E]/60 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 active:scale-[0.95] transition-all duration-200"
             title="エクスポート"
           >
             <Download size={18} />
@@ -58,7 +58,7 @@ export function Header({ totalCount, onExport, onImport }: HeaderProps) {
 
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="p-2 rounded-lg text-[#C9A96E]/50 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 transition-all duration-200"
+            className="p-2.5 rounded-full text-[#C9A96E]/60 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 active:scale-[0.95] transition-all duration-200"
             title="インポート"
           >
             <Upload size={18} />

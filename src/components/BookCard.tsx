@@ -29,40 +29,43 @@ export function BookCard({ book, onClick, index }: BookCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.04, duration: 0.4, ease: 'easeOut' }}
-      className={`book-3d w-[100px] sm:w-[120px] lg:w-[130px] ${
-        isFinished ? 'opacity-50 saturate-[0.3]' : ''
+      whileTap={{ scale: 0.98 }}
+      transition={{ delay: index * 0.03, duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+      className={`book-3d w-[100px] sm:w-[120px] lg:w-[130px] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 ease-out select-none ${
+        isFinished ? 'opacity-40 saturate-[0.2]' : ''
       }`}
       onClick={onClick}
     >
       {book.coverImage ? (
         <div
-          className={`book-cover ${
-            isFinished ? 'sepia-[0.4]' : ''
+          className={`book-cover transition-shadow duration-300 ${
+            isFinished ? 'sepia-[0.3]' : ''
           }`}
           style={{ backgroundImage: `url(${book.coverImage})` }}
         />
       ) : (
         <div
-          className={`book-cover flex items-center justify-center p-2 ${
-            isFinished ? 'sepia-[0.4]' : ''
+          className={`book-cover flex items-center justify-center p-3 transition-shadow duration-300 ${
+            isFinished ? 'sepia-[0.3]' : ''
           }`}
           style={{ background: getGradient(book.title) }}
         >
-          <span className="text-white text-xs font-serif text-center leading-snug line-clamp-3 drop-shadow-sm">
+          <span className="text-[#FDFBF7] text-[10px] sm:text-xs font-serif text-center leading-relaxed tracking-wider line-clamp-3 opacity-90">
             {book.title}
           </span>
         </div>
       )}
-      <p className={`text-xs mt-2 line-clamp-2 text-center max-w-full font-sans ${
-        isFinished ? 'text-[#A0A0A0]' : 'text-[#4A5568]'
+      <p className={`text-[11px] sm:text-xs mt-3.5 line-clamp-2 text-center max-w-full font-sans tracking-wide leading-relaxed font-medium ${
+        isFinished ? 'text-[#4A5568]/50' : 'text-[#2D3748]'
       }`}>
         {book.title}
       </p>
       {isFinished && (
-        <p className="text-[10px] text-center text-[#A8B09E] mt-0.5 font-serif italic">読了</p>
+        <p className="text-[9px] text-center text-[#4A5568]/60 mt-1 font-serif tracking-widest">
+          — FINISHED —
+        </p>
       )}
     </motion.div>
   );

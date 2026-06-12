@@ -70,8 +70,8 @@
 }
 
 @keyframes pulse-soft {
-  0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(201, 169, 110, 0.4); }
-  50% { transform: scale(1.05); box-shadow: 0 6px 28px rgba(201, 169, 110, 0.6); }
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(201, 169, 110, 0.25); }
+  50% { transform: scale(1.015); box-shadow: 0 6px 20px rgba(201, 169, 110, 0.35); }
 }
 
 @keyframes shimmer {
@@ -99,17 +99,17 @@ body {
 /* ─── Scrollbar ─── */
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 3px;
+  background: rgba(201, 169, 110, 0.15);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold);
+  background: rgba(201, 169, 110, 0.4);
 }
 
 /* ─── Selection ─── */
@@ -156,24 +156,24 @@ body {
 /* 3D Book container */
 .book-3d {
   position: relative;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.35s ease,
-              filter 0.35s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 0.3s ease;
   cursor: pointer;
   transform-origin: bottom center;
 }
 
 .book-3d:hover {
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-2px);
   z-index: 10;
 }
 
 /* Gold glow on hover */
 .book-3d:hover .book-cover {
   box-shadow:
-    5px 5px 14px rgba(0, 0, 0, 0.25),
-    2px 2px 6px rgba(0, 0, 0, 0.15),
-    0 0 20px rgba(201, 169, 110, 0.2);
+    2px 4px 12px rgba(0, 0, 0, 0.15),
+    1px 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 16px rgba(201, 169, 110, 0.15);
 }
 
 /* Book cover face */

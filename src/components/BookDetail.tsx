@@ -66,41 +66,41 @@ export function BookDetail({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-[#1B2438]/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 bg-[#1B2438]/40 backdrop-blur-md flex items-center justify-center z-50 p-4"
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.98, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-[#FDFBF7] rounded-2xl shadow-[0_8px_40px_rgba(27,36,56,0.2)] max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+            exit={{ opacity: 0, scale: 0.98, y: 15 }}
+            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+            className="bg-[#FDFBF7]/90 backdrop-blur-lg rounded-[28px] shadow-[0_12px_50px_rgba(27,36,56,0.12)] border border-[#C9A96E]/5 max-w-2xl w-full max-h-[85vh] overflow-y-auto relative p-8 select-none"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-[#E8E4DF] transition-colors duration-200 text-[#8A8A8A] hover:text-[#4A5568]"
+              className="absolute top-6 right-6 z-10 p-2.5 rounded-full hover:bg-[#C9A96E]/10 active:scale-95 transition-all duration-200 text-[#4A5568]/60 hover:text-[#1B2438]"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
 
             {/* Top section: Cover + Info */}
-            <div className="flex flex-col sm:flex-row gap-6 p-6 pb-4">
+            <div className="flex flex-col sm:flex-row gap-8 pb-6">
               {/* Cover */}
-              <div className="w-40 shrink-0 mx-auto sm:mx-0">
+              <div className="w-36 shrink-0 mx-auto sm:mx-0 shadow-[4px_6px_20px_rgba(0,0,0,0.12)] rounded-lg overflow-hidden">
                 {book.coverImage ? (
                   <div
-                    className="book-cover"
+                    className="book-cover border-none shadow-none"
                     style={{ backgroundImage: `url(${book.coverImage})` }}
                   />
                 ) : (
                   <div
-                    className="book-cover flex items-center justify-center p-3"
+                    className="book-cover flex items-center justify-center p-3 border-none shadow-none"
                     style={{ background: getGradient(book.title) }}
                   >
-                    <span className="text-white text-sm font-serif text-center leading-snug drop-shadow-sm">
+                    <span className="text-white text-xs font-serif text-center leading-relaxed tracking-wider drop-shadow-sm">
                       {book.title}
                     </span>
                   </div>
@@ -108,29 +108,29 @@ export function BookDetail({
               </div>
 
               {/* Info */}
-              <div className="flex flex-col gap-3 min-w-0">
-                <h2 className="text-xl font-serif font-semibold text-[#1B2438] pr-8">
+              <div className="flex flex-col justify-center gap-3.5 min-w-0 text-center sm:text-left">
+                <h2 className="text-xl font-serif font-medium text-[#1B2438] pr-0 sm:pr-8 tracking-wide leading-relaxed">
                   {book.title}
                 </h2>
                 {book.authors.length > 0 && (
-                  <div className="flex items-center gap-2 text-sm text-[#4A5568]">
-                    <BookOpen size={14} className="shrink-0 text-[#C9A96E]" />
+                  <div className="flex items-center justify-center sm:justify-start gap-2 text-xs text-[#4A5568]/70 tracking-wide font-sans">
+                    <BookOpen size={13} className="shrink-0 text-[#C9A96E]" />
                     <span>{book.authors.join(', ')}</span>
                   </div>
                 )}
                 {(book.publisher || book.publishedDate) && (
-                  <p className="text-xs text-[#8A8A8A]">
+                  <p className="text-[10px] text-[#4A5568]/60 tracking-wider">
                     {[book.publisher, book.publishedDate].filter(Boolean).join(' · ')}
                   </p>
                 )}
                 {book.isbn && (
-                  <p className="text-xs text-[#8A8A8A]">
+                  <p className="text-[10px] text-[#4A5568]/60 tracking-wider">
                     ISBN: {book.isbn}
                   </p>
                 )}
                 {book.pageCount && (
-                  <p className="text-xs text-[#8A8A8A]">
-                    全{book.pageCount}ページ
+                  <p className="text-[10px] text-[#4A5568]/60 tracking-wider">
+                    {book.pageCount} 頁
                   </p>
                 )}
               </div>
@@ -138,26 +138,22 @@ export function BookDetail({
 
             {/* Description */}
             {book.description && (
-              <>
-                <div className="border-t border-[#E8E4DF]" />
-                <div className="px-6 py-4">
-                  <p className="text-xs font-medium text-[#C9A96E] uppercase tracking-wider mb-2 font-serif">
-                    あらすじ
-                  </p>
-                  <p className="text-sm text-[#4A5568] leading-relaxed line-clamp-5">
-                    {book.description}
-                  </p>
-                </div>
-              </>
+              <div className="mt-6 py-4">
+                <p className="text-[10px] font-bold text-[#C9A96E]/80 uppercase tracking-widest mb-3 font-serif">
+                  あらすじ
+                </p>
+                <p className="text-xs text-[#4A5568]/80 leading-relaxed font-sans font-light">
+                  {book.description}
+                </p>
+              </div>
             )}
 
             {/* Status */}
-            <div className="border-t border-[#E8E4DF]" />
-            <div className="px-6 py-4">
-              <p className="text-xs font-medium text-[#C9A96E] uppercase tracking-wider mb-3 font-serif">
+            <div className="mt-6 py-4">
+              <p className="text-[10px] font-bold text-[#C9A96E]/80 uppercase tracking-widest mb-3 font-serif">
                 ステータス
               </p>
-              <div className="flex gap-2 flex-wrap">
+              <div className="flex gap-2.5 flex-wrap">
                 {STATUS_KEYS.map(status => {
                   const config = STATUS_CONFIG[status];
                   const isActive = book.status === status;
@@ -165,10 +161,10 @@ export function BookDetail({
                     <button
                       key={status}
                       onClick={() => onUpdateStatus(book.id, status)}
-                      className={`px-4 py-2 rounded-full text-sm border transition-all duration-200 ${
+                      className={`px-5 py-2 rounded-full text-xs tracking-wider transition-all duration-300 font-medium active:scale-[0.96] border-none ${
                         isActive
-                          ? `${config.bgColor} ${config.textColor} ${config.borderColor}`
-                          : 'bg-[#F5F0E8] text-[#8A8A8A] border-transparent hover:border-[#D4CFC6]'
+                          ? 'bg-[#C9A96E]/20 text-[#8B6914] shadow-[0_2px_12px_rgba(201,169,110,0.08)]'
+                          : 'bg-[#C9A96E]/5 text-[#4A5568]/50 hover:text-[#2D3748] hover:bg-[#C9A96E]/10'
                       }`}
                     >
                       {config.emoji} {config.label}
@@ -179,9 +175,8 @@ export function BookDetail({
             </div>
 
             {/* Memo */}
-            <div className="border-t border-[#E8E4DF]" />
-            <div className="px-6 py-4">
-              <p className="text-xs font-medium text-[#C9A96E] uppercase tracking-wider mb-3 font-serif">
+            <div className="mt-6 py-4">
+              <p className="text-[10px] font-bold text-[#C9A96E]/80 uppercase tracking-widest mb-3 font-serif">
                 メモ
               </p>
               <textarea
@@ -189,18 +184,17 @@ export function BookDetail({
                 onChange={(e) => setMemo(e.target.value)}
                 onBlur={handleMemoBlur}
                 placeholder="感想やメモを自由に書けます..."
-                className="w-full min-h-[100px] p-3 rounded-xl border border-[#E8E4DF] bg-[#F5F0E8]/50 text-sm text-[#2D3748] placeholder-[#8A8A8A] resize-y focus:outline-none focus:border-[#C9A96E] focus:ring-1 focus:ring-[#C9A96E] transition-all duration-200"
+                className="w-full min-h-[100px] p-4 rounded-2xl border border-transparent bg-[#C9A96E]/5 text-xs text-[#2D3748] placeholder-[#4A5568]/40 resize-y focus:outline-none focus:border-[#C9A96E]/30 focus:bg-transparent focus:ring-0 transition-all duration-300 leading-relaxed"
               />
             </div>
 
             {/* Delete */}
-            <div className="border-t border-[#E8E4DF]" />
-            <div className="px-6 py-4">
+            <div className="mt-6 pt-4 flex justify-end">
               <button
                 onClick={handleDelete}
-                className="flex items-center gap-2 text-sm text-[#B07070] hover:text-[#8B4545] hover:bg-[#F5E8E8] px-4 py-2 rounded-lg transition-all duration-200"
+                className="flex items-center gap-2 text-xs text-red-500/60 hover:text-red-600 hover:bg-red-500/5 px-4 py-2.5 rounded-xl transition-all duration-300 active:scale-[0.97]"
               >
-                <Trash2 size={14} />
+                <Trash2 size={13} />
                 この本を削除
               </button>
             </div>

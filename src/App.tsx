@@ -5,6 +5,7 @@ import { Bookshelf } from '@/components/Bookshelf';
 import { FloatingAddButton } from '@/components/FloatingAddButton';
 import { BookDetail } from '@/components/BookDetail';
 import { AddBookModal } from '@/components/AddBookModal';
+import { ConceptModal } from '@/components/ConceptModal';
 import type { Book, SearchResult } from '@/types';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
 
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isConceptOpen, setIsConceptOpen] = useState(false);
 
   const handleBookClick = (book: Book) => {
     setSelectedBook(book);
@@ -74,6 +76,7 @@ export default function App() {
         totalCount={total}
         onExport={exportData}
         onImport={handleImport}
+        onOpenConcept={() => setIsConceptOpen(true)}
       />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
@@ -98,6 +101,11 @@ export default function App() {
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         onAdd={handleAddBook}
+      />
+
+      <ConceptModal
+        isOpen={isConceptOpen}
+        onClose={() => setIsConceptOpen(false)}
       />
     </div>
   );

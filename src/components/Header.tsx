@@ -6,9 +6,10 @@ interface HeaderProps {
   totalCount: number;
   onExport: () => void;
   onImport: (json: string) => void;
+  onOpenConcept: () => void;
 }
 
-export function Header({ totalCount, onExport, onImport }: HeaderProps) {
+export function Header({ totalCount, onExport, onImport, onOpenConcept }: HeaderProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,11 +36,19 @@ export function Header({ totalCount, onExport, onImport }: HeaderProps) {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-5 sm:py-6 flex items-center justify-between">
         {/* Left: Logo */}
-        <div className="flex items-baseline gap-3">
-          <h1 className="font-serif text-xl font-medium text-[#F5F0E8] tracking-widest select-none">
-            📚 BookStock
-          </h1>
-          <span className="text-[#C9A96E]/50 text-xs font-serif italic tracking-wide select-none">デジタルアーカイブ</span>
+        <div className="flex items-center gap-3.5">
+          <div className="flex items-baseline gap-2.5">
+            <h1 className="font-serif text-xl font-medium text-[#F5F0E8] tracking-widest select-none">
+              📚 BookStock
+            </h1>
+            <span className="text-[#C9A96E]/50 text-xs font-serif italic tracking-wide select-none hidden md:inline">デジタルアーカイブ</span>
+          </div>
+          <button
+            onClick={onOpenConcept}
+            className="text-[9px] sm:text-[10px] font-serif italic tracking-[0.15em] text-[#C9A96E]/60 hover:text-[#C9A96E] hover:bg-[#C9A96E]/10 px-2.5 py-1 rounded-full active:scale-[0.95] transition-all duration-200 border border-[#C9A96E]/20 hover:border-[#C9A96E]/40"
+          >
+            Concept
+          </button>
         </div>
 
         {/* Right: Count + Actions */}

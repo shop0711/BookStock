@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, BookOpen, Trash2, ExternalLink } from 'lucide-react';
+import { X, BookOpen, Trash2 } from 'lucide-react';
 import type { Book, BookStatus } from '@/types';
 import { STATUS_CONFIG } from '@/types';
 
@@ -189,25 +189,24 @@ export function BookDetail({
             </div>
 
             {/* Store Availability */}
-            {book.isbn && (
-              <div className="mt-8 py-5">
-                <p className="text-[10px] font-bold text-[#C9A96E]/80 uppercase tracking-widest mb-4 font-serif">
-                  Store Availability
-                </p>
-                <p className="text-[10px] text-[#4A5568]/50 mb-4 font-sans tracking-wide leading-relaxed">
-                  提携書店の店舗在庫をリアルタイムで確認できます。
-                </p>
-                <a
-                  href={`https://www.shoten.co.jp/rel/searchbook/?isbn=${book.isbn}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 w-full py-3.5 sm:py-3 rounded-xl border border-[#C9A96E]/30 text-[#C9A96E] hover:bg-[#C9A96E]/10 hover:border-[#C9A96E]/50 font-serif text-xs tracking-widest transition-all duration-300 active:scale-[0.98] select-none"
-                >
-                  <ExternalLink size={13} />
-                  店舗在庫を検索する
-                </a>
-              </div>
-            )}
+            <div className="mt-8 py-5">
+              <p className="text-[10px] font-bold text-[#C9A96E]/80 uppercase tracking-widest mb-4 font-serif">
+                Store Availability / 店舗在庫状況
+              </p>
+              {book.isbn ? (
+                <iframe 
+                  src={`https://www.shoten.co.jp/rel/searchbook/?isbn=${book.isbn}`}
+                  className="w-full h-80 sm:h-96 rounded-lg border border-[#C9A96E]/20 bg-white"
+                  title="店舗在庫状況"
+                />
+              ) : (
+                <div className="w-full py-10 px-4 rounded-lg border border-dashed border-[#C9A96E]/20 bg-[#C9A96E]/5 flex items-center justify-center text-center">
+                  <p className="text-xs text-[#4A5568]/60 font-sans tracking-wide leading-relaxed">
+                    ISBNコードが登録されている書籍のみ、<br className="sm:hidden" />ここにリアルタイムの店舗在庫状況が表示されます。
+                  </p>
+                </div>
+              )}
+            </div>
 
             {/* Delete */}
             <div className="mt-6 pt-4 flex justify-end">
